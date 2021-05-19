@@ -118,6 +118,9 @@ Run the following command to kick off your first pipeline:
 oc create -f https://raw.githubusercontent.com/Gitvazonline/dotnet-contoso-gitops-developers/main/pipeline-run/build-and-rollout-pipeline-run.yaml -n contoso-cicd
 ```
 
+If the "Build App" part of the pipeline fails, it's possible that the pipeline started before Nexus (in the cicd-tools project) fully initialized.  Take a look to make sure it has a dark blue circle, and the associated "Job" pod is a green circle.  If that looks good, simply run the above command again and you should be good to go.
+
+
 **Note:** Later, we can configure GitHub webhooks to automatically trigger pipeline runs when code is pushed to a repository.
 
 In the OpenShift Developer console, change to the `contoso-cicd` project and click on "Pipelines" in the left menu.  You should see the `contoso-devops-pipeline` is running.  You can click on the pipeline run to watch the progress of the build.
